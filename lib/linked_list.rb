@@ -42,7 +42,7 @@ class LinkedList
   def at(index)
     current = @head
     current_idx = 0
-    while current#.next_node != nil
+    while current
       return current.value if current_idx == index
       current = current.next_node
       current_idx += 1
@@ -64,11 +64,11 @@ class LinkedList
   def size
     current = @head
     current_idx = 0
-    while current.next_node != nil
+    while current
       current = current.next_node
       current_idx += 1
     end
-    return current_idx + 1
+    return current_idx
   end
 
   def contains?(value)
@@ -96,7 +96,7 @@ end
 p "testing create (1)"
 my_list = LinkedList.new(1)
 p my_list.to_s
-p my_list.size
+#p my_list.size
 
 p "testing append"
 my_list.append(2)
@@ -104,20 +104,27 @@ my_list.append(3)
 my_list.append(4)
 my_list.append(5)
 p my_list.to_s
-p my_list.size
+#p my_list.size
 
 p "testing prepend"
 my_list.prepend("a")
 my_list.prepend("b")
 p my_list.to_s
-p my_list.size
+#p my_list.size
 
-#p my_list.head
-#p my_list.tail
+p my_list.head
+p my_list.tail
+
 p "testing at"
+p my_list.at(0)
+p my_list.at(1)
+p my_list.at(2)
+p my_list.at(3)
 p my_list.at(4)
 p my_list.at(5)
 p my_list.at(6)
+
+p "testing pop"
 p my_list.pop
 p "last element should have been popped"
 p my_list.to_s
