@@ -92,6 +92,27 @@ class LinkedList
     return false
   end
 
+  def insert_at(value, index)
+    return prepend(value) if index == 0
+    
+    current = @head
+    current_idx = 0
+    previous = nil
+    new_node = Node.new(value)
+
+    while current
+      if current_idx == index
+        previous.next_node = new_node
+        new_node.next_node = current
+      end
+      previous = current
+      current = current.next_node
+      current_idx += 1
+    end
+
+    return "Error: Index out of range"
+  end
+
 end
 
 
@@ -167,3 +188,11 @@ p my_list.find("a")
 p my_list.find(1)
 p my_list.find(nil)
 p my_list.find("xxxx")
+
+p "testing insert at"
+my_list.insert_at(9, 0)
+p my_list.to_s
+my_list.insert_at("x", 2)
+p my_list.to_s
+my_list.insert_at("zzz", 3)
+p my_list.to_s
