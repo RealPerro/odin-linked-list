@@ -77,7 +77,17 @@ class LinkedList
     while current
       return true if current.value == value
       current = current.next_node
-      current_idx
+    end
+    return false
+  end
+
+  def find(value)
+    current = @head
+    current_idx = 0
+    while current
+      return current_idx if current.value == value
+      current = current.next_node
+      current_idx +=1
     end
     return false
   end
@@ -150,3 +160,10 @@ p my_list.contains?("aa")
 p my_list.contains?("a")
 p my_list.contains?(2)
 p my_list.contains?(1)
+
+p "testing find"
+p my_list.find("b")
+p my_list.find("a")
+p my_list.find(1)
+p my_list.find(nil)
+p my_list.find("xxxx")
