@@ -94,7 +94,7 @@ class LinkedList
 
   def insert_at(value, index)
     return prepend(value) if index == 0
-    
+
     current = @head
     current_idx = 0
     previous = nil
@@ -110,6 +110,27 @@ class LinkedList
       current_idx += 1
     end
 
+    return "Error: Index out of range"
+  end
+
+  def remove_at(index)
+    if index == 0
+      current = @head
+      @head = @head.next_node
+      return current
+    end
+    
+    current = @head
+    current_idx = 0
+    previous = nil
+    while current
+      if current_idx == index
+        previous.next_node = current.next_node
+      end
+      previous = current
+      current = current.next_node
+      current_idx += 1
+    end
     return "Error: Index out of range"
   end
 
@@ -195,4 +216,14 @@ p my_list.to_s
 my_list.insert_at("x", 2)
 p my_list.to_s
 my_list.insert_at("zzz", 3)
+p my_list.to_s
+
+p "testing remove at"
+my_list.remove_at(3)
+p my_list.to_s
+
+my_list.remove_at(0)
+p my_list.to_s
+
+my_list.remove_at(3)
 p my_list.to_s
